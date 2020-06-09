@@ -105,13 +105,13 @@ stages:
 
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
-  dependsOn: Build
+  dependsOn: Dev
   #condition: eq(variable['Build.Reason', 'Schedule'])
   jobs:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-16.04'
-    environment: dev
+    environment: test
     variables:
     - group: Release
     strategy:
